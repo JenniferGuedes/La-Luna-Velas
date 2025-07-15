@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*Cabeçalho*/
+h1{
+    font-family: "Cinzel Decorative";
+    font-size: 27px;
+}
+footer{
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    background-color: #ceabdf;
+    width: 100%;
+    font-family: "Montserrat";
+    background: linear-gradient(to right, rgba(206, 171, 223, 0.8), rgba(217, 186, 210, 0.6));
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    background-color: #ceabdf;
+    width: 100%;
+    font-family: "Montserrat";
+    background: linear-gradient(to right, rgba(206, 171, 223, 0.8), rgba(217, 186, 210, 0.6));
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  
+}
+
+/*SideBar*/
+.sidebar ul{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0;
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 170px;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    background: linear-gradient(to bottom, rgba(206, 171, 223, 0.8), rgba(217, 186, 210, 0.6));
+    z-index: 1001;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+}
+
+.sidebar a{
+    text-decoration: none;
+    font-family: "Montserrat";
+    color: black;
+}
+
+.sidebar li{
+    list-style-type: none;
+}
+
+/*NavBar*/
+
+.navbar a{
+    text-decoration: none;
+    color: black;
+}
+
+.navbar li{
+    list-style-type: none;
+    font-size: 15px;
+}
+
+.navbar ul{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-right: 1.5rem;
+    padding: 0;
+
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: linear-gradient(to right, #ceabdfe6, #d9bad2cc);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-family: "Montserrat", sans-serif;
+  padding: 0.2rem;
+  
+}
+
+.navbar li a {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+
+.navbar li a::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #c28cdd;
+  transition: width 0.3s ease;
+}
+
+.navbar li a:hover::before {
+  width: 100%;
+}
+
+
+/*Body*/
+body{  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url(images/pattern.png);
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+
+} 
+
+h2, h4, p{
+    font-family: "Montserrat";
+}
+
+main{
+    flex: 1;
+    padding-top: 80px;
+
+}
+
+*{
+    scroll-behavior: smooth;
+}
+
+/*Footer*/
+footer a{
+    text-decoration: none;
+    color: black;
+
+}
+
+footer a:hover{
+    color:#c28cdd;  
+}
+
+/*Cards*/
+.cardVela{
+    background-color: #ceabdf;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: "Montserrat";
+    cursor: pointer;
+}
+
+.cardVela:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background-color: #c28cdd;
+}
+
+.cardVela h4, 
+.cardVela p{
+    text-align: center;
+}
+
+.cardVela img{
+    display: block;
+    border-radius: 20px;
+    width: 150px;
+    margin: 0 auto;
+}
+
+section{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+/*Responsividade*/
+@media (max-width:700px) {
+    footer{
+        text-align: center;
+    }
+    header{
+        text-align: center;
+    }
+
+    .hideMobile{
+        display:none;
+    }
+
+}
+
+@media (min-width:700px){
+    .hideDesktop{
+        display: none;
+    }
+}
