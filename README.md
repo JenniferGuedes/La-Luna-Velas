@@ -29,9 +29,9 @@ La Luna Velas é um site comercial desenvolvido para apresentar e vender velas a
 Este projeto foi inspirado na estética mística e artesanal das velas feitas à mão, com elementos visuais como gatos, luas e molduras decorativas inspiradas em art noveau. Cada detalhe foi pensado para criar experiênciad sensoriais e acolhedoras ímpares ao usuário.
 
 ## Como visualizar a página até momento?
-Clone o repositório;
+1. Clone o repositório;
 
-Abra index.html ou login.html com Live Server ou diretamente no navegador;
+2. Abra index.html ou login.html com Live Server ou diretamente no navegador;
 
 
 ## Status do projeto
