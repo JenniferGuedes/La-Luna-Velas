@@ -26,7 +26,7 @@ La Luna Velas é um site comercial desenvolvido para apresentar e vender velas a
 * VS Code com extensões como PostCSS e Live Server.
 
 ## Inspiração
-Este projeto foi inspirado na estética mística e artesanal das velas feitas à mão, com elementos visuais como gatos, luas e molduras decorativas inspiradas em art noveau. Cada detalhe foi pensado para criar experiênciad sensoriais e acolhedoras ímpares ao usuário.
+Este projeto foi inspirado na estética mística e artesanal das velas feitas à mão, com elementos visuais como gatos, luas e molduras decorativas inspiradas em art noveau. Cada detalhe foi pensado para criar experiências sensoriais e acolhedoras ímpares ao usuário.
 
 ## Como visualizar a página até momento?
 1. Clone o repositório;
