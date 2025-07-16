@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" href="../images/IconLuna.png">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1>La Luna Velas</h1>
+            <ul>
+                <li class="hideMobile"><a href="index.html#inicio" target="_blank">🌙Início</a></li>
+                <li class="hideMobile"><a href="index.html#velas60gramas" target="_blank">🌙Velas 60g</a></li>
+                <li class="hideMobile"><a href="index.html#velas90gramas" target="_blank">🌙Velas 90g</a></li>
+                <li class="hideMobile"><a href="index.html#velas160gramas" target="_blank">🌙Velas 160g</a></li>
+                <li class="hideMobile"><a href="index.html#wax" target="_blank">🌙Wax Melts</a></li>
+                <li class="hideMobile"><a href="index.html#especiais" target="_blank">🌙Especiais</a></li>
+
+<!--Menu hambúrguer, perfil, carrinho-->
+                <li><a href="#perfil"><img src="../images/account.svg" alt="Ícone do Perfil"></a></li>
+                <li><a href="#carrinho"><img src="../images/cart.svg" alt="Ícone do carrinho"></a></li>
+                <li class="hideDesktop" onclick=showsideBar()><img src="../images/menupreto.svg" alt="Abrir menu lateral"></li> 
+            </ul>
+        </nav>
+    </header>
+        <nav class="sidebar">
+<!--Barra de navegação Mobile-->
+            <ul>
+                <li onclick=hidesideBar()><img src="../images/closepreto.svg" target="_blank" alt="Fechar menu lateral"></li>
+                <li class="hideDesktop"><a href="index.html#inicio" target="_blank">🌙Início</a></li>
+                <li class="hideDesktop"><a href="index.html#velas60gramas" target="_blank">🌙Velas 60g</a></li>
+                <li class="hideDesktop"><a href="index.html#velas90gramas" target="_blank">🌙Velas 90g</a></li>
+                <li class="hideDesktop"><a href="index.html#velas160gramas" target="_blank">🌙Velas 160g</a></li>
+                <li class="hideDesktop"><a href="index.html#wax" target="_blank">🌙Wax Melts</a></li>
+                <li class="hideDesktop"><a href="index.html#especiais" target="_blank">🌙Especiais</a></li> 
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="login">
+            <img src="../images/login-frame.png" class="loginFrame" alt="moldura decorada do login">
+            <article class="loginContent">
+                <h3>Bem vindos!</h3>
+                <h4>Já tem cadastro? Faça seu Login!</h4>
+                <input type="text" placeholder="E-mail" class="loginInput">
+                <input type="text" placeholder="Senha" class="loginInput">
+                <button class="loginButton">Entrar</button>
+                <a href="/auth/forgot-password.html" target="_blank" class="forgotPassword">Esqueci a senha</a>
+                <a href="#register" target="_blank" class="register">Registre-se</a>
+            </article>
+        </section>
+    </main>
+     <footer>
+       <p>Dúvidas? <a href="https://wa.me/5513991456123?text=Olá,%20tenho%20dúvidas%20sobre%20as%20velas,%20poderia%20me%20ajudar?" target="_blank">Fale com La Luna Velas 💬</a> &copy; Todos os Direitos Reservados. La Luna Velas🕯️🌙</p></footer>
+    <script src="../script.js"></script>
+</body>
+</html>
