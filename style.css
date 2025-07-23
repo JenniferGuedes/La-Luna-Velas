@@ -152,6 +152,7 @@ main{
 }
 
 
+
 /*Cards*/
 .candleCard{
     background-color: #ceabdf;
@@ -161,6 +162,7 @@ main{
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     font-family: "Montserrat";
     cursor: pointer;
+    text-align: center;
 }
 
 .candleCard:hover {
@@ -194,29 +196,43 @@ section{
 
 /*Botão saiba mais/comprar - cards*/
 
-.moreInfoButton{
+.moreInfoButton,
+.buyButton{
+    text-decoration: none;
     background-color: #c28cdd;
     border-radius: 20px;
     font-family: "Montserrat";
     cursor: pointer;
-    display: block;
-    margin: 0.5rem auto;
+    display: inline-block;
+    margin: 0.5rem 0.3rem;
+    padding: 0.5rem 1.2rem;
+    color: white;
+    text-align: center;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
 }
 
+
+.buyButton:hover,
 .moreInfoButton:hover{
     background-color: #ceabdf;
 }
 
-.buyButton{
-    background-color: #c28cdd;
-    border-radius: 20px;
-    font-family: "Montserrat";
-    cursor: pointer;
-    display: block;
-    margin: 0.5rem auto;
+.buyButtonDisabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.6;
+  background-color: #999;
+  color: #eee;
 }
 
-.buyButton:hover{
+
+button.buyButtonDisabled{
+    cursor: not-allowed; !important
+    pointer-events:none;
+}
+
+.buyButtonDisabled:hover{
     background-color: #ceabdf;
 }
 
@@ -444,6 +460,98 @@ main.contactPage{
 .catimg:hover{
     transform:scale(1.05);
 }
+
+/*Showcase do produto*/
+
+
+.productStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.productTitle {
+  text-align: center;
+  font-size: 2rem;
+  font-family: "Cinzel Decorative";
+  margin-bottom: 1rem;
+}
+
+.mainImage {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.imageGalleryRow {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.thumbnail {
+  width: 60px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.price {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+input#cep {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin: 0.5rem 0;
+  width: 100%;
+  max-width: 300px;
+  font-family: "Montserrat";
+}
+
+button,
+.buyButton {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0.3rem;
+  border-radius: 20px;
+  background-color: #c28cdd;
+  color: white;
+  font-family: "Montserrat";
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.textSection {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  font-family: "Montserrat";
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.productDescription {
+  white-space: pre-line;
+  font-size: 1rem;
+}
+
+
 
 /*Responsividade*/
 @media (max-width:700px) {
