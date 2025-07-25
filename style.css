@@ -1,5 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+/*CTA Page*/
+body.ctaPage {
+    background-image: url('images/portalCopy.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ctaHeader {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    }
+
+.ctaHeader h1 {
+    font-family: "Cinzel Decorative", serif;
+    color: #ffffe4;
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.ctaHeader h2,
+.ctaHeader h3 {
+    color: #ffffe4;
+    margin: 10px 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+}
+
+.ctaButton {
+    margin-top: 40px;
+    width: 250px;
+    background: linear-gradient(135deg, #C28CDD, #A87AC5);
+    padding: 14px 28px;
+    border-radius: 40px;
+    font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+    color: #ffffe4;
+    font-weight: bold;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.ctaButton:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #B07ACB, #8E5BAF);
+}
+
+body.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
 /*Cabeçalho*/
 h1{
     font-family: "Cinzel Decorative";
@@ -17,6 +81,10 @@ header{
     font-family: "Montserrat";
     background: linear-gradient(to right, rgba(206, 171, 223, 0.8), rgba(217, 186, 210, 0.6));
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  
+}
+
+#headerText h2{
+    font-family:"Cinzel Decorative";
 }
 
 /*SideBar*/
