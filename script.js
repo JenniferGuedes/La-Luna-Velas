@@ -10,7 +10,8 @@ sidebar.style.display = "none";
 }
 
 //Transition para a homepage
-  const button = document.getElementById('enterButton');
+ const button = document.getElementById('enterButton');
+if (button) {
   button.addEventListener('click', function(e) {
     e.preventDefault(); 
     document.body.classList.add('fade-out');
@@ -18,6 +19,110 @@ sidebar.style.display = "none";
       window.location.href = button.href;
     }, 1000); 
   });
+}
+
+//Carrinho
+
+// Adicionar produto ao carrinho e salvar no localStorage
+function addToCart(productId) {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push(productId);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  alert("Produto adicionado ao carrinho! 🛒");
+}
+
+// Atualizar o contador com base no localStorage
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const count = cart.length;
+  const counter = document.getElementById('cart-count');
+  if (counter) {
+    counter.textContent = count;
+    counter.style.display = count > 0 ? 'inline' : 'none';
+  }
+}
+
+//  Ativar botão "Comprar" ao carregar a página
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartCount(); // garante que o contador reflita o localStorage
+
+  const productId = getProductIdFromURL();
+  const buyButton = document.querySelector(".buyButton");
+
+  if (buyButton && productId) {
+    buyButton.onclick = () => addToCart(productId);
+  }
+
+  const buyButtons = document.querySelectorAll(".buyButton");
+  buyButtons.forEach(button => {
+    const productId = button.getAttribute("data-id");
+    if (productId) {
+      button.onclick = (event) => {
+        event.preventDefault();
+        console.log("Comprando:", productId);
+        addToCart(productId);
+      };
+    }
+  });
+});
+
+// Capturar ID do produto da URL
+function getProductIdFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("id");
+}
+
+//
+function toggleCartModal() {
+  const modal = document.getElementById("cartModal");
+  modal.style.display = modal.style.display === "block" ? "none" : "block";
+}
+
+function clearCart() {
+  localStorage.removeItem("cart");
+  updateCartCount();
+  document.getElementById("cartItems").innerHTML = "<li>Carrinho vazio.</li>";
+}
+
+function goToCheckout() {
+  window.location.href = "checkout.html";
+}
+
+function renderCartItems() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartList = document.getElementById("cartItems");
+
+  if (cart.length === 0) {
+    cartList.innerHTML = "<li>Carrinho vazio.</li>";
+    return;
+  }
+
+  cartList.innerHTML = "";
+  cart.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = `Produto: ${item}`;
+    cartList.appendChild(li);
+  });
+}
+
+
+//Modal
+
+function toggleCartDropdown() {
+  const dropdown = document.getElementById("cartDropdown");
+  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+}
+
+function renderCartItems() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartList = document.getElementById("cartItems");
+
+  cartList.innerHTML = cart.length === 0
+    ? "<li>Carrinho vazio.</li>"
+    : cart.map(item => `<li>${item}</li>`).join("");
+}
+
 
 /*Showcase do produto - Página única*/
 //Brinde Rosé
@@ -1639,7 +1744,7 @@ function loadProductPage() {
       <p class="price"><strong>${product.price}</strong></p>
       <input type="text" id="cep" placeholder="Digite seu CEP">
       <button onclick="calculateShipping()">Calcular Frete</button>
-      <a href="#" class="buyButton ${isSpecial ? "specialCandle" : ""}">Comprar</a>
+      <button class="buyButton ${isSpecial ? "specialCandle" : ""}" data-id="${productId}">Comprar</button>
     </section>
 
     <section class="textSection">
@@ -1695,3 +1800,7 @@ if (window.location.pathname.includes("product.html")) {
   loadProductPage();
   controlSpecialButtonsByMonth();
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartCount(); 
+});

@@ -15,19 +15,33 @@
 
             <ul>
                 <li class="hideMobile"><a href="index.html#inicio">🌙Início</a></li>
-                <li class="hideMobile"><a href="index.html#velas60gramas">🌙Velas 60g</a></li>
-                <li class="hideMobile"><a href="index.html#velas90gramas">🌙Velas 90g</a></li>
-                <li class="hideMobile"><a href="index.html#velas160gramas">🌙Velas 160g</a></li>
-                <li class="hideMobile"><a href="index.html#wax">🌙Wax Melts</a></li>
-                <li class="hideMobile"><a href="index.html#especiais">🌙Especiais</a></li>
-                <li class="hideMobile"><a href="contact.html" target="_blank">🌙Contato</a></li>
+                <li class="hideMobile"><a href="index.html#velas60gramas">🕯️Velas 60g</a></li>
+                <li class="hideMobile"><a href="index.html#velas90gramas">🕯️Velas 90g</a></li>
+                <li class="hideMobile"><a href="index.html#velas160gramas">🕯️Velas 160g</a></li>
+                <li class="hideMobile"><a href="index.html#wax">🕯️Wax Melts</a></li>
+                <li class="hideMobile"><a href="index.html#especiais">✨Especiais</a></li>
+                <li class="hideMobile"><a href="contact.html" target="_blank">💌Contato</a></li>
 
 <!--Menu hambúrguer, perfil, carrinho-->
                 <li><a href="#perfil"><img src="images/account.svg" alt="Ícone do Perfil"></a></li>
-                <li><a href="#carrinho"><img src="images/cart.svg" alt="Ícone do carrinho"></a></li>
-                <li class="hideDesktop" onclick=showsideBar()><img src="images/menupreto.svg" alt="Abrir menu lateral"></li> 
-            </ul>
-
+                <li style="position: relative;">
+                <a href="#" onclick="toggleCartDropdown(); renderCartItems(); return false;">
+                    <img src="images/cart.svg" alt="Ícone do carrinho">
+                    <span id="cart-count">0</span>
+                </a>
+<!--Modal-->
+            <section id="cartDropdown" class="cart-dropdown">
+                <article>
+                <header><strong>Seu Carrinho</strong></header>
+                <ul id="cartItems"></ul>
+                <footer>
+                    <button onclick="goToCheckout()">Checkout</button>
+                    <button onclick="clearCart()">Limpar</button>
+                </footer>
+                </article>
+            </section>
+            </li>
+            <li class="hideDesktop" onclick=showsideBar()><img src="images/menupreto.svg" alt="Abrir menu lateral"></li>
 <!--Hover de perfil-->
 
     </header>

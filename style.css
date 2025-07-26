@@ -219,6 +219,37 @@ main{
     scroll-margin-top: 87px;
 }
 
+/*Modal*/
+
+.cart-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 250px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 999;
+}
+
+.cart-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.cart-dropdown button {
+  margin: 5px;
+  padding: 6px 12px;
+  border: none;
+  background-color: #6c63ff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
 
 /*Cards*/
