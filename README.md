@@ -9,17 +9,18 @@ La Luna Velas é um site comercial desenvolvido para apresentar e vender velas a
 - Vitrine de produtos categorizadas por peso da vela
 - Cards interativos e responsivos com botões “Saiba Mais” e “Comprar”
 - Página de produto gerada dinamicamente via JavaScript
+- Botão para limpar carrinho
+- Contador de itens no carrinho visível no topo da página
+- Modal de confirmação ao adicionar produto
+- Persistência do carrinho com Local Storage
 - Layout responsivo para desktop e mobile
 - Tela de login com moldura personalizada (em construção)
 - Estilo sem uso de `<div>` — estrutura semântica com elementos como `<section>`, `<article>`, `<header>`, e afins.
 
 ## Funcionalidades em Desenvolvimento
 
-- Contador de itens no carrinho visível no topo da página
-- Modal de confirmação ao adicionar produto
-- Persistência do carrinho com Local Storage
 - Página de checkout com resumo dos itens
-- Botão para limpar carrinho
+
 
 
 ## Tecnologias utilizadas
