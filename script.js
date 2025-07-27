@@ -25,23 +25,60 @@ if (button) {
 
 // Adicionar produto ao carrinho e salvar no localStorage
 function addToCart(productId) {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.push(productId);
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const existingItem = cart.find(item => item.id === productId);
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({ id: productId, quantity: 1 });
+  }
+
   localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
-  alert("Produto adicionado ao carrinho! 🛒");
+  updateCartCount(); 
+  alert("Produto adicionado ao carrinho!");
 }
+
+
+function renderCart() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartList = document.getElementById("cart-items");
+  const cartTotal = document.getElementById("cart-total");
+  cartList.innerHTML = "";
+  let total = 0;
+
+  cart.forEach(cartItem => {
+    const product = products[cartItem.id];
+    const priceNumber = parseFloat(product.price.replace("R$", "").replace(",", "."));
+    const itemTotal = priceNumber * cartItem.quantity;
+    total += itemTotal;
+
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <article style="display: flex; gap: 1rem;">
+        <img src="${product.images[0]}" alt="${product.name}" width="60">
+        <div>
+          <h3>${product.name}</h3>
+          <p>Quantidade: ${cartItem.quantity}</p>
+          <p>Preço unitário: ${product.price}</p>
+          <p><strong>Subtotal:</strong> R$ ${itemTotal.toFixed(2)}</p>
+        </div>
+      </article>
+    `;
+    cartList.appendChild(li);
+  });
+
+  cartTotal.textContent = `Total: R$ ${total.toFixed(2)}`;
+}
+
 
 // Atualizar o contador com base no localStorage
 function updateCartCount() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const count = cart.length;
-  const counter = document.getElementById('cart-count');
-  if (counter) {
-    counter.textContent = count;
-    counter.style.display = count > 0 ? 'inline' : 'none';
-  }
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  document.getElementById("cart-count").textContent = totalItems;
 }
+
 
 //  Ativar botão "Comprar" ao carregar a página
 document.addEventListener("DOMContentLoaded", () => {
@@ -109,19 +146,185 @@ function renderCartItems() {
 
 //Modal
 
-function toggleCartDropdown() {
-  const dropdown = document.getElementById("cartDropdown");
-  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-}
-
 function renderCartItems() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const cartList = document.getElementById("cartItems");
 
-  cartList.innerHTML = cart.length === 0
-    ? "<li>Carrinho vazio.</li>"
-    : cart.map(item => `<li>${item}</li>`).join("");
+  if (cart.length === 0) {
+    cartList.innerHTML = "<li>Carrinho vazio.</li>";
+    return;
+  }
+
+  cartList.innerHTML = cart.map(item => {
+    const product = products[item.id];
+    const priceNumber = parseFloat(product.price.replace("R$", "").replace(",", "."));
+    const subtotal = priceNumber * item.quantity;
+
+    return `
+      <li style="margin-bottom: 1rem;">
+        <strong>${product.name}</strong><br>
+        Quantidade: ${item.quantity}<br>
+        Preço unitário: ${product.price}<br>
+        Subtotal: R$ ${subtotal.toFixed(2)}
+      </li>
+    `;
+  }).join("");
 }
+
+function toggleCartDropdown() {
+  const dropdown = document.getElementById("cartDropdown");
+  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+
+  if (dropdown.style.display === "block") {
+    renderCartItems(); // atualiza os itens do carrinho
+  }
+}
+
+//Ckeckout
+
+
+//Cupons de desconto
+
+const coupons = {
+  "JENNY10": 0.10,
+  "WELCOME15": 0.15,
+  "SUMMER20": 0.20,
+  "VIP25": 0.25
+};
+
+function applyDiscount() {
+  const coupon = document.getElementById("coupon").value.trim().toUpperCase();
+  const originalAmount = 100.00;
+
+  if (coupon === "FREESHIP") {
+    alert("Free shipping applied!");
+    return;
+  }
+
+  if (coupons[coupon]) {
+    const discount = coupons[coupon];
+    const newAmount = originalAmount * (1 - discount);
+    document.getElementById("amount").textContent = newAmount.toFixed(2);
+  } else {
+    alert("Invalid coupon.");
+  }
+}
+
+//Checkout page
+
+function renderCheckout() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartList = document.getElementById("cart-items");
+  const cartTotal = document.getElementById("cart-total");
+  cartList.innerHTML = "";
+  let total = 0;
+
+  if (cart.length === 0) {
+    cartList.innerHTML = "<li>Seu carrinho está vazio.</li>";
+    cartTotal.textContent = "Total: R$ 0,00";
+    return;
+  }
+
+  cart.forEach(item => {
+    const product = products[item.id];
+    const priceNumber = parseFloat(product.price.replace("R$", "").replace(",", "."));
+    const subtotal = priceNumber * item.quantity;
+    total += subtotal;
+
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <article style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+        <img src="${product.images[0]}" alt="${product.name}" width="80">
+        <div>
+          <h3>${product.name}</h3>
+          <p>Quantidade: ${item.quantity}</p>
+          <p>Preço unitário: ${product.price}</p>
+          <p><strong>Subtotal:</strong> R$ ${subtotal.toFixed(2)}</p>
+        </div>
+      </article>
+    `;
+    cartList.appendChild(li);
+  });
+
+  cartTotal.innerHTML = `<strong>Total:</strong> R$ ${total.toFixed(2)}`;
+}
+
+window.onload = renderCheckout;
+
+
+//Finalizando a compra
+function renderCheckout() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartList = document.getElementById("cart-items");
+  const cartTotal = document.getElementById("cart-total");
+  cartList.innerHTML = "";
+  let total = 0;
+
+  if (cart.length === 0) {
+    cartList.innerHTML = "<li>Seu carrinho está vazio.</li>";
+    cartTotal.textContent = "Total: R$ 0,00";
+    return;
+  }
+
+  cart.forEach(item => {
+    const product = products[item.id];
+    const priceNumber = parseFloat(product.price.replace("R$", "").replace(",", "."));
+    const subtotal = priceNumber * item.quantity;
+    total += subtotal;
+
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <article style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+        <img src="${product.images[0]}" alt="${product.name}" width="80">
+        <div>
+          <h3>${product.name}</h3>
+          <p>Quantidade: ${item.quantity}</p>
+          <p>Preço unitário: ${product.price}</p>
+          <p><strong>Subtotal:</strong> R$ ${subtotal.toFixed(2)}</p>
+        </div>
+      </article>
+    `;
+    cartList.appendChild(li);
+  });
+
+  cartTotal.innerHTML = `<strong>Total:</strong> R$ ${total.toFixed(2)}`;
+}
+
+function verificarLogin() {
+  const loginStatus = document.getElementById("login-status");
+  const usuarioLogado = localStorage.getItem("usuario"); // exemplo simples
+
+  if (usuarioLogado) {
+    loginStatus.textContent = `Logado como: ${usuarioLogado}`;
+  } else {
+    loginStatus.innerHTML = `<span style="color: red;">Você precisa estar logado para finalizar a compra.</span>`;
+    document.querySelector("button").disabled = true;
+  }
+}
+
+function finalizarPedido() {
+  const usuarioLogado = localStorage.getItem("usuario");
+  if (!usuarioLogado) {
+    alert("Você precisa estar logado para finalizar o pedido.");
+    return;
+  }
+
+  const form = document.getElementById("delivery-form");
+  if (!form.checkValidity()) {
+    alert("Preencha todos os campos obrigatórios do endereço.");
+    return;
+  }
+
+  alert("Pedido finalizado com sucesso! 🎉");
+  localStorage.removeItem("cart");
+  renderCheckout();
+}
+
+window.onload = () => {
+  renderCheckout();
+  verificarLogin();
+};
+
 
 
 /*Showcase do produto - Página única*/

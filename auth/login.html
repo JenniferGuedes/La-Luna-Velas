@@ -45,9 +45,12 @@
             <article class="loginContent">
                 <h3>Bem vindos!</h3>
                 <h4>Já tem cadastro? Faça seu Login!</h4>
-                <input type="text" placeholder="E-mail" class="loginInput">
-                <input type="text" placeholder="Senha" class="loginInput">
-                <button class="loginButton">Entrar</button>
+                
+            <form id="loginForm">
+                <label>Email: <input type="email" id="email" class="loginInput" required></label><br>
+                <label>Senha: <input type="password" id="senha" class="loginInput" required></label><br>
+                <button type="submit" class="loginButton">Entrar</button>
+            </form>
                 <a href="/auth/forgot-password.html" target="_blank" class="forgotPassword">Esqueci a senha</a>
                 <a href="#register" target="_blank" class="register">Registre-se</a>
             </article>

@@ -79,7 +79,7 @@ header{
     background-color: #ceabdf;
     width: 100%;
     font-family: "Montserrat";
-    background: linear-gradient(to right, rgba(206, 171, 223, 0.8), rgba(217, 186, 210, 0.6));
+    background: linear-gradient(to right, rgba(206, 171, 223, 0.8), #d9bad299);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  
 }
 
@@ -222,35 +222,53 @@ main{
 /*Modal*/
 
 .cart-dropdown {
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 100%;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  width: 250px;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  z-index: 999;
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 250px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 999;
 }
 
 .cart-dropdown ul {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
 }
 
 .cart-dropdown button {
-  margin: 5px;
-  padding: 6px 12px;
-  border: none;
-  background-color: #6c63ff;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
+    margin: 5px;
+    padding: 6px 12px;
+    border: none;
+    background-color: #ceabdf;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
+/*Checkout*/
+
+#deliveryForm input{
+    all: unset;
+    background-color: #d9bad299;
+    border: 2px solid #d9bad299;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    }
+
+#deliveryForm{
+    font-family:"Montserrat";
+
+}
 
 /*Cards*/
 .candleCard{

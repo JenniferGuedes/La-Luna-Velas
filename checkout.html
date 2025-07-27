@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | La Luna Velas</title>
+    <link rel="icon" href="images/IconLuna.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+<!--Barra de navegação Desktop-->
+        <nav class="navbar">
+            <h1>La Luna Velas</h1>
+
+            <ul>
+                <li class="hideMobile"><a href="home.html#velas60gramas">🕯️Velas 60g</a></li>
+                <li class="hideMobile"><a href="home.html#velas90gramas">🕯️Velas 90g</a></li>
+                <li class="hideMobile"><a href="home.html#velas160gramas">🕯️Velas 160g</a></li>
+                <li class="hideMobile"><a href="home.html#wax">🕯️Wax Melts</a></li>
+                <li class="hideMobile"><a href="home.html#especiais">✨Especiais</a></li>
+                <li class="hideMobile"><a href="contact.html" target="_blank">💌Contato</a></li>
+
+<!--Menu hambúrguer, perfil, carrinho-->
+                <li><a href="#perfil"><img src="images/account.svg" alt="Ícone do Perfil"></a></li>
+                <li style="position: relative;">
+                <a href="#" onclick="toggleCartDropdown(); renderCartItems(); return false;">
+                    <img src="images/cart.svg" alt="Ícone do carrinho">
+                    <span id="cart-count">0</span>
+                </a>
+<!--Modal-->
+            <section id="cartDropdown" class="cart-dropdown">
+                <article>
+                    <header><strong>Seu Carrinho</strong></header>
+                    <ul id="cartItems"></ul>
+                    <footer>
+                        <button onclick="goToCheckout()">Checkout</button>
+                        <button onclick="clearCart()">Limpar</button>
+                    </footer>
+                </article>
+            </section>
+            </li>
+            <li class="hideDesktop" onclick=showsideBar()><img src="images/menupreto.svg" alt="Abrir menu lateral"></li>
+      
+    </header>
+
+        <nav class="sidebar">
+<!--Barra de navegação Mobile-->
+            <ul>
+                <li onclick=hidesideBar()><img src="images/closepreto.svg" class=".closeButton" alt="Fechar menu lateral"></li>
+                <li class="hideDesktop"><a href="home.html#velas60gramas">🕯️Velas 60g</a></li>
+                <li class="hideDesktop"><a href="home.html#velas90gramas">🕯️Velas 90g</a></li>
+                <li class="hideDesktop"><a href="home.html#velas160gramas">🕯️Velas 160g</a></li>
+                <li class="hideDesktop"><a href="home.html#wax">🕯️Wax Melts</a></li>
+                <li class="hideDesktop"><a href="home.html#especiais">✨Especiais</a></li> 
+                <li class="hideDesktop"><a href="contact.html" target="_blank">💌Contato</a></li>
+            </ul>
+        </nav>
+
+    
+        <main id="checkout">
+            <h1>Finalizar Compra</h1>
+
+            <section id="cartSection">
+                <h2>Seu Carrinho</h2>
+                <ul id="cartItems"></ul>
+                <p id="cartTotal"><strong>Total:</strong> R$ 0,00</p>
+            </section>
+
+            <section id="deliverySection">
+                <h2>Endereço de Entrega</h2>
+                <form id="deliveryForm">
+                    <label>CEP: <input type="text" id="cep" required></label><br>
+                    <label>Endereço: <input type="text" id="endereco" required></label><br>
+                    <label>Número: <input type="text" id="numero" required></label><br>
+                    <label>Complemento: <input type="text" id="complemento"></label><br>
+                    <label>Bairro: <input type="text" id="bairro" required></label><br>
+                    <label>Cidade: <input type="text" id="cidade" required></label><br>
+                    <label>Estado: <input type="text" id="estado" required></label><br>
+                </form>
+            </section>
+
+            <section id="account-section">
+                <h2>Conta</h2>
+                <p id="login-status">Verificando login...</p>
+            </section>
+
+            <button onclick="finalizarPedido()">Finalizar Pedido</button>
+        </main>
+
+    <footer>
+       <p>Dúvidas? <a href="https://wa.me/5513991456123?text=Olá,%20tenho%20dúvidas%20sobre%20as%20velas,%20poderia%20me%20ajudar?" target="_blank">Fale com La Luna Velas 💌</a> &copy; Todos os Direitos Reservados. La Luna Velas🕯️🌙</p></footer>
+<script src="script.js"></script>
+</body>
+</html>
